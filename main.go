@@ -103,11 +103,11 @@ func main() {
 		msg.ReplyToMessageID = update.Message.MessageID
 		msg.ParseMode = "Markdown"
 
-		userId := strconv.FormatInt(update.Message.Chat.ID, 10)
-		if os.Getenv("TELEGRAM_ID") != "" && userId != os.Getenv("TELEGRAM_ID") {
-			msg.Text = "You are not authorized to use this bot."
-			bot.Send(msg)
-			continue
+                userId := strconv.FormatInt(update.Message.Chat.ID, 10)
+                if os.Getenv("TELEGRAM_ID") != "" && userId != os.Getenv("TELEGRAM_ID") {
+			//msg.Text = "You are not authorized to use this bot."
+			//bot.Send(msg)
+			//continue
 		}
 
 		bot.Request(tgbotapi.NewChatAction(update.Message.Chat.ID, "typing"))
