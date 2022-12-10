@@ -92,6 +92,10 @@ func main() {
 				bot.Send(updateChatID, updateMessageID, fmt.Sprintf("Error: %v", err))
 			} else {
 				bot.SendAsLiveOutput(updateChatID, updateMessageID, feed)
+				// loging telegram messages to a file
+				log.Printf("[%s: %s] %s", update.Message.From.UserName, strconv.FormatInt(update.Message.From.ID, 10), update.Message.Text)
+				// logging chatgpt responses to a file
+				log.Printf("[%s -> %s] %s", bot.Username, strconv.FormatInt(update.Message.From.ID, 10), feed)
 			}
 			continue
 		}
